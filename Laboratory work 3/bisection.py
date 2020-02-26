@@ -1,10 +1,10 @@
 def f(x):
-    return (2 ** (3 * x))
+    return (1/2)*(25/x+x)
 
 iteration = 0
 a = 1
 b = 4
-epsilon = 0.0001
+epsilon = 0.01
 
 while abs(b - a) > epsilon:
     iteration += 1
@@ -13,6 +13,8 @@ while abs(b - a) > epsilon:
         a = c
     else:
         b = c
+    print(str(iteration) + ' ' + str(abs(b-a)) + ' ' + str(c))
 
-print('X: ' + str(c) + ',  iterations number: ' + str(iteration))
-print('Convergence parameter: ' + str((b - a) / iteration))
+print('X: ' + str(c)) 
+print('Число Итераций: ' + str(iteration))
+print('Параметр сходимости: ' + str((b - a) / iteration))
