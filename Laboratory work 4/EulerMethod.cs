@@ -1,27 +1,28 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EulerMethod
 {
     public class EulerMethod
     {
-        public double X { get; set; }
-        public double Y { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
 
-        public List<double> XList { get; set; }
+        public List<float> XList { get; set; }
 
-        public List<double> YList { get; set; }
+        public List<float> YList { get; set; }
 
         public EulerMethod()
         {
-            XList = new List<double>();
-            YList = new List<double>();
+            XList = new List<float>();
+            YList = new List<float>();
         }
 
-        public (List<double>, List<double>) Solve(double startXPoint, double endXPoint, double initialСondition, double step)
+        public (List<float>, List<float>) Solve(float startXPoint, float endXPoint, float initialСondition, float partition)
         {
-            int overalSteps = (int)((endXPoint - startXPoint) / step);
+            int overalSteps = (int)(1 / partition);
+            var step = (endXPoint - startXPoint) * partition;
+            step = (float)Math.Round(step * 100f) / 100f; // Round
 
             X = startXPoint;
             Y = initialСondition;
@@ -34,16 +35,16 @@ namespace EulerMethod
                 Y += step * F(X, Y);
                 YList.Add(Y);
 
-                X += step;
-                XList.Add(X);
+                X += (float)Math.Round(step * 100f) / 100f;  // Round
+                XList.Add((float)Math.Round(X * 100f) / 100f);  // Round
             }
 
             return (XList, YList);
         }
 
-        private double F(double x, double y)
+        private float F(float x, float y)
         {
-            return (-3 * y) + (2 * Math.Pow(x,2));
+            return (1.8f * y) + (0.3f * (float)Math.Pow(x,2));
         }
     }
 }
