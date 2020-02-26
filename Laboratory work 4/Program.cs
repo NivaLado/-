@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace EulerMethod
@@ -6,11 +6,11 @@ namespace EulerMethod
 
     struct XYCoordinates
     {
-        public List<double> X, Y;
+        public List<float> X, Y;
 
         public int Length;
 
-        public XYCoordinates(List<double> x,List<double> y)
+        public XYCoordinates(List<float> x,List<float> y)
         {
             X = x;
             Y = y;
@@ -25,7 +25,7 @@ namespace EulerMethod
         {
             var euler = new EulerMethod();
 
-            var result = euler.Solve(0, 1, 13, 0.01f);
+            var result = euler.Solve(0, 10, 1, 0.01f);
 
             XYCoordinates coordinates = new XYCoordinates(result.Item1, result.Item2);
 
